@@ -5,20 +5,21 @@ app = Flask(__name__)
 tasks = [
     {
         'id': 1,
-        'title': u'Buy groceries',
-        'description': u'Milk, Cheese, Pizza, Fruit, Tylenol', 
+        'Name': 'Rahul',
+        'Contact': '94520022000', 
         'done': False
     },
     {
+       
         'id': 2,
-        'title': u'Learn Python',
-        'description': u'Need to find a good Python tutorial on the web', 
+        'Name': 'Ramesh',
+        'Contact': '9422002000', 
         'done': False
     }
 ]
 
 
-@app.route("/add-data", methods=["GET"])
+@app.route("/add-data", methods=["POST"])
 def add_task():
     if not request.json:
         return jsonify({
@@ -28,8 +29,8 @@ def add_task():
 
     task = {
         'id': tasks[-1]['id'] + 1,
-        'title': request.json['title'],
-        'description': request.json.get('description', ""),
+        'title': request.json['Name'],
+        'description': request.json.get('Contact', ""),
         'done': False
     }
     tasks.append(task)
